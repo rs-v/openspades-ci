@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-          path: openspades-ci
+      
       - name: Cache vcpkg and dependencies
         uses: actions/cache@v3
         with:
@@ -33,7 +33,7 @@ jobs:
         with:
           build-dir: ${{ runner.workspace }}\openspades.mk
           build-type: Release
-          configure-options: -A Win32 -D CMAKE_BUILD_TYPE=Release -D CMAKE_TOOLCHAIN_FILE=${{ runner.workspace }}\zerospades\vcpkg\scripts\buildsystems\vcpkg.cmake -D VCPKG_TARGET_TRIPLET=x86-windows-static
+          configure-options: -A Win32 -D CMAKE_BUILD_TYPE=Release -D CMAKE_TOOLCHAIN_FILE=${{ runner.workspace }}\openspades-ci\vcpkg\scripts\buildsystems\vcpkg.cmake -D VCPKG_TARGET_TRIPLET=x86-windows-static
           parallel: 8
 
       - name: Upload artifacts
